@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>testProject</groupId>
+    <artifactId>testProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <allure.version>1.4.14</allure.version>
+        <aspectj.version>1.7.4</aspectj.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-testng-adaptor</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.53.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-junit-adaptor</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <junitArtifactName>junit:junit</junitArtifactName>
+                    <encoding>UTF-8</encoding>
+                    <inputEncoding>UTF-8</inputEncoding>
+                    <outputEncoding>UTF-8</outputEncoding>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <!--<argLine>-->
+                        <!-- -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.8.4/aspectjweaver-1.8.4.jar -Xmx512M -Xms512M -Dcucumber.options="&#45;&#45;tags ${TAGS}"-->
+                    <!--</argLine>-->
+                    <!--                    <properties>
+                                            <property>
+                                                <name>listener</name>
+                                                <value>ru.sbt.qa.bdd.util.AllureSBTListener</value>
+                                            </property>
+                                        </properties>-->
+                    <threadCount>1</threadCount>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.8.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>1.8.3</version>
+                    </dependency>
+
+                <dependency>
+                    <groupId>org.apache.maven.surefire</groupId>
+                    <artifactId>surefire-junit47</artifactId>
+                    <version>2.18.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.maven.surefire</groupId>
+                    <artifactId>surefire-testng</artifactId>
+                    <version>2.18.1</version>
+                </dependency>
+            </dependencies>
+            <!--<configuration>-->
+                <!--<threadCount>1</threadCount>-->
+            <!--</configuration>-->
+                <!--<configuration>-->
+                    <!--<argLine>-->
+                        <!-- -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
+                    <!--</argLine>-->
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>listener</name>-->
+                            <!--<value>ru.yandex.qatools.allure.junit.AllureRunListener</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
+                <!--</configuration>-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.aspectj</groupId>-->
+                        <!--<artifactId>aspectjweaver</artifactId>-->
+                        <!--<version>${aspectj.version}</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-maven-plugin</artifactId>
+                <version>LATEST</version>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
